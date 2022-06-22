@@ -39,8 +39,18 @@ const App = () => {
 
   const options = {
     legend: {
-      display: true, //y軸のラベル表示
-      position: "right" as const
+      display: true,
+
+      //修正- ラベルは右側に書いたほうが認知されやすい
+      position: "right" as const,
+      //追加-　ラベルを最も右上に
+      align: "start",
+
+      //追加-　labelsのカスタマイズ
+      labels: {
+        // 追加-　ラベルボックスを〇に
+        usePointStyle: true
+      }
     },
     scales: {
       // 修正-　yAxes, xAxesを　y, xに変更
@@ -55,7 +65,9 @@ const App = () => {
       ],
       x: [
         {
-          type: "time",
+          // type: "time",
+          type: "linear" as const,
+
           time: {
             unit: "month",
             displayFormats: {
