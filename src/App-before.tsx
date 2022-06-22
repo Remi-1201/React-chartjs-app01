@@ -23,9 +23,7 @@ const App = () => {
         labels: dateOfCases, //x軸ラベル
         datasets: [
           {
-            // 修正-　y軸のラベル名を短く
-            label: "感染者数",
-            position: "left",
+            label: "新型コロナウイルス感染者数の推移（日本）", //y軸のラベル
             backgroundColor: "rgba(75,192,192,0.4)", //グラフの色
             borderColor: "rgba(75,192,192)", //
             borderWidth: 1,
@@ -39,12 +37,10 @@ const App = () => {
 
   const options = {
     legend: {
-      display: true, //y軸のラベル表示
-      position: "right" as const
+      display: true //y軸のラベル表示
     },
     scales: {
-      // 修正-　yAxes, xAxesを　y, xに変更
-      y: [
+      yAxes: [
         {
           ticks: {
             max: 26000,
@@ -53,7 +49,7 @@ const App = () => {
           }
         }
       ],
-      x: [
+      xAxes: [
         {
           type: "time",
           time: {
@@ -66,12 +62,10 @@ const App = () => {
       ]
     },
     title: {
-      display: true,
-      //修正-　ラベル名は長かったのでタイトル名にしました
-      text: ["新型コロナウイルス", "感染者数の推移（日本）"]
+      display: true, //グラフのタイトル表示
+      text: ["グラフの", "タイトル"] //グラフのタイトルは改行もできる
     }
   };
-
   return (
     <div className="bg-light p-5">
       <Line data={dataChart} options={options} />
