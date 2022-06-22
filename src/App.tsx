@@ -25,7 +25,6 @@ const App = () => {
           {
             // 修正-　y軸のラベル名を短く
             label: "感染者数",
-            position: "left",
             backgroundColor: "rgba(75,192,192,0.4)", //グラフの色
             borderColor: "rgba(75,192,192)", //
             borderWidth: 1,
@@ -53,26 +52,31 @@ const App = () => {
       }
     },
     scales: {
-      // 修正-　yAxes, xAxesを　y, xに変更
-      y: [
+      yAxes: [
+        // 追加-　y軸のデータのmax, minを設定
         {
           ticks: {
-            max: 26000,
+            max: 160000,
             min: 0
-            // stepSize: 3,
           }
         }
       ],
-      x: [
+      xAxes: [
         {
-          // type: "time",
-          type: "linear" as const,
-
+          type: "time",
           time: {
             unit: "month",
+            // 追加-　1か月ごとの遷移を描画
+            stepSize: 1,
+            // 修正- 軸ラベルはなるべく傾けないように
             displayFormats: {
-              quarter: "MMM YYYY"
+              month: "MMM"
             }
+          },
+          // 追加-　x軸のデータのmax, minを設定
+          ticks: {
+            min: "1",
+            max: "12"
           }
         }
       ]
@@ -80,7 +84,7 @@ const App = () => {
     title: {
       display: true,
       //修正-　ラベル名は長かったのでタイトル名にしました
-      text: ["新型コロナウイルス", "感染者数の推移（日本）"]
+      text: ["新型コロナウイルス", "感染者数の推移（2021年）"]
     }
   };
 

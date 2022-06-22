@@ -7,3 +7,5 @@
 3. [Line Segment Styling](https://www.chartjs.org/docs/latest/samples/line/segments.html)
 
 4. [データ視覚化のデザイン #1](https://note.com/goando/n/neb6ea35f1da3)
+
+5. [とほほの Chart.js 入門](https://www.tohoho-web.com/ex/chartjs-params.html)
