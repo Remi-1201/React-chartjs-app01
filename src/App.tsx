@@ -20,13 +20,18 @@ const App = () => {
           }
         });
       setDataChart({
+        type: "line",
         labels: dateOfCases, //x軸ラベル
         datasets: [
           {
             // 修正-　y軸のラベル名を短く
             label: "感染者数",
-            backgroundColor: "rgba(75,192,192,0.4)", //グラフの色
-            borderColor: "rgba(75,192,192)", //
+            // 修正-　ラインの背景色を透明に
+            backgroundColor: "transparent",
+            //追加-　点のスタイルを"line"に変更
+            pointStyle: "line",
+            // 修正-　線の色を紅色に変更
+            borderColor: "rgb(255, 99, 132)",
             borderWidth: 1,
             data: confirmedCases //y軸ラベル
           }
@@ -39,7 +44,6 @@ const App = () => {
   const options = {
     legend: {
       display: true,
-
       //修正- ラベルは右側に書いたほうが認知されやすい
       position: "right" as const,
       //追加-　ラベルを最も右上に
@@ -47,14 +51,20 @@ const App = () => {
 
       //追加-　labelsのカスタマイズ
       labels: {
-        // 追加-　ラベルボックスを〇に
+        color: "rgb(255, 99, 132)",
+        // 追加-　ラベルボックスに点のスタイルを適用
         usePointStyle: true
       }
     },
     scales: {
       yAxes: [
-        // 追加-　y軸のデータのmax, minを設定
         {
+          //追加- y軸ラベル表示
+          scaleLabel: {
+            display: true,
+            labelString: "人数"
+          },
+          // 追加-　y軸のデータのmax, minを設定
           ticks: {
             max: 160000,
             min: 0
@@ -63,6 +73,12 @@ const App = () => {
       ],
       xAxes: [
         {
+          //追加- x軸ラベル表示
+          scaleLabel: {
+            display: true,
+            labelString: "2021年度"
+          },
+
           type: "time",
           time: {
             unit: "month",
